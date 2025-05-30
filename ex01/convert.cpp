@@ -2,7 +2,7 @@
 
 float Fixed::toFloat(void) const
 {
-	return static_cast<float>(_rawBits) / (1 << _fractionalBits);
+	return (float)(_rawBits) / (1 << _fractionalBits);
 }
 
 int Fixed::toInt(void) const

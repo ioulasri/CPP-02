@@ -23,11 +23,18 @@ Fixed &Fixed::operator=(const Fixed &other)
 	return *this;
 }
 
-Fixed::Fixed(int value) : _rawBits(value << _fractionalBits)
+Fixed::Fixed(const int value) : _rawBits(value << _fractionalBits)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
-Fixed::Fixed(float value) : _rawBits(static_cast<int>(roundf(value * (1 << _fractionalBits))))
+
+Fixed::Fixed(const float value) : _rawBits((roundf(value * (1 << _fractionalBits))))
 {
 	std::cout << "Float constructor called" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed)
+{
+	os << fixed.toFloat();
+	return os;
 }
